@@ -39,6 +39,18 @@ class Line:
    
    def compute_vertical_cross(self):
       return (self.start.x <= 0) and (self.end.x >= 0)
+
+   def discretize_line(self, n):
+    s = []
+    dx = (self.end.x - self.start.x) / (n - 1)
+    dy = (self.end.y - self.start.y) / (n - 1)
+    
+    for i in range(n):
+        x = self.start.x + i * dx
+        y = self.start.y + i * dy
+        s.append(Point(x, y))
+    
+    self.discrete_points = points
    
    def __repr__(self):
       return f"Start {self.start}  End: {self.end}"
